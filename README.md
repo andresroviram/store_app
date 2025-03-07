@@ -46,9 +46,17 @@ $ cd store_app
 # Install dependencies
 $ flutter pub get
 
+# Create archive .env
+$ API_KEY=''
+$ BASE_URL='https://fakestoreapi.com'
+
 # generate codes
 $ dart run build_runner build --delete-conflicting-outputs
 
 # Run the app
 $ flutter run
+
+# Account Sessión (Login)
+$ admin@gmail.com
+$ 123
 ```

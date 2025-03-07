@@ -419,6 +419,7 @@ abstract class _Invalidate implements UserEvent {
 mixin _$UserState {
   bool get isLoading => throw _privateConstructorUsedError;
   Failure? get failure => throw _privateConstructorUsedError;
+  int? get userCount => throw _privateConstructorUsedError;
   List<UserEntity> get users => throw _privateConstructorUsedError;
 
   /// Create a copy of UserState
@@ -433,7 +434,11 @@ abstract class $UserStateCopyWith<$Res> {
   factory $UserStateCopyWith(UserState value, $Res Function(UserState) then) =
       _$UserStateCopyWithImpl<$Res, UserState>;
   @useResult
-  $Res call({bool isLoading, Failure? failure, List<UserEntity> users});
+  $Res call(
+      {bool isLoading,
+      Failure? failure,
+      int? userCount,
+      List<UserEntity> users});
 }
 
 /// @nodoc
@@ -453,6 +458,7 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
   $Res call({
     Object? isLoading = null,
     Object? failure = freezed,
+    Object? userCount = freezed,
     Object? users = null,
   }) {
     return _then(_value.copyWith(
@@ -464,6 +470,10 @@ class _$UserStateCopyWithImpl<$Res, $Val extends UserState>
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure?,
+      userCount: freezed == userCount
+          ? _value.userCount
+          : userCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       users: null == users
           ? _value.users
           : users // ignore: cast_nullable_to_non_nullable
@@ -480,7 +490,11 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isLoading, Failure? failure, List<UserEntity> users});
+  $Res call(
+      {bool isLoading,
+      Failure? failure,
+      int? userCount,
+      List<UserEntity> users});
 }
 
 /// @nodoc
@@ -498,6 +512,7 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? failure = freezed,
+    Object? userCount = freezed,
     Object? users = null,
   }) {
     return _then(_$InitialImpl(
@@ -509,6 +524,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
               as Failure?,
+      userCount: freezed == userCount
+          ? _value.userCount
+          : userCount // ignore: cast_nullable_to_non_nullable
+              as int?,
       users: null == users
           ? _value._users
           : users // ignore: cast_nullable_to_non_nullable
@@ -523,6 +542,7 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {this.isLoading = true,
       this.failure = null,
+      this.userCount = 0,
       final List<UserEntity> users = const <UserEntity>[]})
       : _users = users;
 
@@ -532,6 +552,9 @@ class _$InitialImpl implements _Initial {
   @override
   @JsonKey()
   final Failure? failure;
+  @override
+  @JsonKey()
+  final int? userCount;
   final List<UserEntity> _users;
   @override
   @JsonKey()
@@ -543,7 +566,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'UserState(isLoading: $isLoading, failure: $failure, users: $users)';
+    return 'UserState(isLoading: $isLoading, failure: $failure, userCount: $userCount, users: $users)';
   }
 
   @override
@@ -554,11 +577,13 @@ class _$InitialImpl implements _Initial {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.failure, failure) || other.failure == failure) &&
+            (identical(other.userCount, userCount) ||
+                other.userCount == userCount) &&
             const DeepCollectionEquality().equals(other._users, _users));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, failure,
+  int get hashCode => Object.hash(runtimeType, isLoading, failure, userCount,
       const DeepCollectionEquality().hash(_users));
 
   /// Create a copy of UserState
@@ -574,12 +599,15 @@ abstract class _Initial implements UserState {
   const factory _Initial(
       {final bool isLoading,
       final Failure? failure,
+      final int? userCount,
       final List<UserEntity> users}) = _$InitialImpl;
 
   @override
   bool get isLoading;
   @override
   Failure? get failure;
+  @override
+  int? get userCount;
   @override
   List<UserEntity> get users;
 

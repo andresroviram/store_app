@@ -47,6 +47,34 @@ class UserView extends StatelessWidget {
               context.read<UserBloc>().add(const UserEvent.invalidate());
             }
 
+            if ((state.userCount ?? 0) > 0) {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'El total de usuarios es:',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          '${state.userCount ?? 0}',
+                          style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              );
+            }
+
             if (state.isLoading) {
               Overlay.of(context).insert(loader);
             } else {

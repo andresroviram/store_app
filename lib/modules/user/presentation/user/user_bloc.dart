@@ -40,6 +40,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       case Right(value: List<UserEntity> users):
         emit(state.copyWith(
           users: users,
+          userCount: users.length,
           isLoading: false,
         ));
     }

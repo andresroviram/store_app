@@ -1,6 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../user/user_bloc.dart';
 import '../widgets/user_list.dart';
 
 class UserMobile extends StatelessWidget {
@@ -8,6 +10,7 @@ class UserMobile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = context.select((UserBloc bloc) => bloc.state.isLoading);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,7 +26,9 @@ class UserMobile extends StatelessWidget {
               textAlign: TextAlign.left,
             ),
           ),
-          const UserListWidget(),
+          isLoading
+              ? Expanded(child: const SizedBox.shrink())
+              : const UserListWidget(),
         ],
       ),
     );

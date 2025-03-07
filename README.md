@@ -29,6 +29,7 @@ A new Flutter project.
 
 ![Image](screenshots/diagram.png)
 ![Image](screenshots/folders_structure.png)
+![Image](screenshots/clean_architecture.png)
 
 
 

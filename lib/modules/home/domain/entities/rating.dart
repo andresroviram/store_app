@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'entities.dart';
 
 class RatingEntity extends Equatable {
   const RatingEntity({

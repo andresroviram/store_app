@@ -1,5 +1,13 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+
+import '../../../../config/injectable/injectable_dependency.dart';
+import '../../../../core/utils/helpers.dart';
+import '../../domain/usecases/user_usecases.dart';
+import '../user/user_bloc.dart';
+import 'user_mobile.dart';
+import 'user_web.dart';
 
 class UserView extends StatelessWidget {
   const UserView({super.key});
@@ -7,18 +15,49 @@ class UserView extends StatelessWidget {
   static const path = '/user';
   static const name = 'User';
 
-  static Widget create() => const UserView();
+  static Widget create() => MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            lazy: false,
+            create: (context) => UserBloc(
+              userUseCase: getIt<UserUseCase>(),
+            )..add(UserEvent.getUsers()),
+          ),
+        ],
+        child: const UserView(),
+      );
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'user_list'.tr(),
+    final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
+    OverlayEntry loader = context.read<UserBloc>().loader;
+    return Listener(
+      behavior: HitTestBehavior.opaque,
+      onPointerDown: (_) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        body: BlocListener<UserBloc, UserState>(
+          listener: (context, state) {
+            if (state.failure != null) {
+              ShowFailure.instance.mapFailuresToNotification(
+                context,
+                failure: state.failure!,
+              );
+              context.read<UserBloc>().add(const UserEvent.invalidate());
+            }
+
+            if (state.isLoading) {
+              Overlay.of(context).insert(loader);
+            } else {
+              if (loader.mounted) loader.remove();
+            }
+          },
+          child: switch (breakpoint.name) {
+            MOBILE => const UserMobile(),
+            (_) => const UserWeb(),
+          },
         ),
-      ),
-      body: const Center(
-        child: Text('User View'),
       ),
     );
   }

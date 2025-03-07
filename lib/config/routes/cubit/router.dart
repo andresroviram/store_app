@@ -12,7 +12,7 @@ import '../../authenticate/cubit/auth_cubit.dart';
 import '../../../modules/user/routes.dart';
 import '../../../modules/home/routes.dart';
 import '../../../modules/setting/routes.dart';
-import '../../../components/splash_view.dart';
+import '../../../modules/splash/view/splash_view.dart';
 import '../../../modules/login/presentation/view/login_view.dart';
 import '../widgets/scaffold_with_navigation.dart';
 

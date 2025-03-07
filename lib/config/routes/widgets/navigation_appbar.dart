@@ -19,6 +19,11 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
     final responsive = ResponsiveBreakpoints.of(context);
     return AppBar(
       forceMaterialTransparency: true,
+      shape: LinearBorder.bottom(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.primary,
+        ),
+      ),
       title: const NavigationTitle(),
       leadingWidth: responsive.isDesktop ? 81 : null,
       leading: Container(
@@ -49,7 +54,6 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       centerTitle: true,
-      elevation: 4,
       actions: [
         const ThemeModeButton.icon(),
         PopupMenuButton<int>(

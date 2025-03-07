@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../../config/injectable/injectable_dependency.dart';
@@ -49,7 +50,15 @@ class _UserViewState extends State<UserView> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          alignment: Alignment.center,
+          contentPadding: EdgeInsets.only(
+            bottom: 6,
+            left: 20,
+            right: 20,
+            top: 20,
+          ),
           content: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
@@ -67,6 +76,24 @@ class _UserViewState extends State<UserView> {
               ),
             ],
           ),
+          actions: [
+            Center(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                ),
+                onPressed: () {
+                  context.pop();
+                },
+                child: Text('Cerrar'),
+              ),
+            ),
+          ],
         );
       },
     );
@@ -93,7 +120,7 @@ class _UserViewState extends State<UserView> {
             }
 
             if ((state.userCount ?? 0) > 0) {
-              _showUserCountDialog(context, state.userCount ?? 0);
+              _showUserCountDialog(context, state.userCount);
             }
 
             if (state.isLoading) {

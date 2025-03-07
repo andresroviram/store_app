@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -9,7 +10,7 @@ import '../user/user_bloc.dart';
 import 'user_mobile.dart';
 import 'user_web.dart';
 
-class UserView extends StatelessWidget {
+class UserView extends StatefulWidget {
   const UserView({super.key});
 
   static const path = '/user';
@@ -26,6 +27,50 @@ class UserView extends StatelessWidget {
         ],
         child: const UserView(),
       );
+
+  @override
+  State<UserView> createState() => _UserViewState();
+}
+
+class _UserViewState extends State<UserView> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final state = context.read<UserBloc>().state;
+      if ((state.userCount ?? 0) > 0) {
+        _showUserCountDialog(context, state.userCount ?? 0);
+      }
+    });
+  }
+
+  void _showUserCountDialog(BuildContext context, int? userCount) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                'the_total_users'.tr(),
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 8),
+              Text(
+                '$userCount',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,31 +93,7 @@ class UserView extends StatelessWidget {
             }
 
             if ((state.userCount ?? 0) > 0) {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          'El total de usuarios es:',
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        SizedBox(height: 8),
-                        Text(
-                          '${state.userCount ?? 0}',
-                          style: TextStyle(
-                            fontSize: 32,
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).colorScheme.primary,
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-              );
+              _showUserCountDialog(context, state.userCount ?? 0);
             }
 
             if (state.isLoading) {

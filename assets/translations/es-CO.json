@@ -26,5 +26,6 @@
     "price": "Precio",
     "publisher": "Editor",
     "authors": "autores",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "the_total_users": "El total de usuarios es:"
 }

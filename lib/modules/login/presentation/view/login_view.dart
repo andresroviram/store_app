@@ -125,7 +125,12 @@ class _LoginViewState extends State<LoginView> {
                           alignment: Alignment.centerLeft,
                           child: TextButton(
                             onPressed: () {},
-                            child: Text('restore_password'.tr()),
+                            child: Text(
+                              'restore_password'.tr(),
+                              style: TextStyle(
+                                color: Theme.of(context).colorScheme.secondary,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -136,11 +141,12 @@ class _LoginViewState extends State<LoginView> {
                               child: ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
-                                      Theme.of(context).colorScheme.primary,
+                                      Theme.of(context).colorScheme.secondary,
                                   shape: RoundedRectangleBorder(
                                     side: BorderSide(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
                                     ),
                                     borderRadius: BorderRadius.circular(30),
                                   ),
@@ -169,7 +175,7 @@ class _LoginViewState extends State<LoginView> {
                           icon: Icon(
                             Icons.fingerprint,
                             size: 50,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context).colorScheme.secondary,
                           ),
                           onPressed: _authCubit.fingerprintLogin,
                         ),

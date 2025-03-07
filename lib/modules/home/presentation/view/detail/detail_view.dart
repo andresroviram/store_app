@@ -56,7 +56,7 @@ class DetailView extends StatelessWidget {
                         width: 50,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: context.colorScheme.primary,
+                          color: context.colorScheme.secondary,
                         ),
                         alignment: Alignment.center,
                         child: Icon(
@@ -130,7 +130,7 @@ class DetailView extends StatelessWidget {
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 color:
-                                                    context.colorScheme.primary,
+                                                    context.colorScheme.secondary,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20,
                                               ),

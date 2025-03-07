@@ -17,7 +17,7 @@ class ClientCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       shadowColor: Theme.of(context).focusColor.withValues(alpha: 0.05),
-      color: context.colorScheme.primary.withValues(alpha: 0.1),
+      color: context.colorScheme.secondary.withValues(alpha: 0.1),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         dense: true,
@@ -27,6 +27,7 @@ class ClientCard extends StatelessWidget {
         ),
         leading: CircleAvatar(
           radius: 24,
+          backgroundColor: context.colorScheme.secondary,
           child: Text(user.name?.firstname?[0] ?? ''),
         ),
         title: Text(

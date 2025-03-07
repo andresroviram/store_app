@@ -46,7 +46,7 @@ class ThemeModeButton extends StatelessWidget {
           style: brightness == Brightness.dark
               ? OutlinedButton.styleFrom(
                   side: BorderSide(
-                    color: colorScheme.primary.withValues(alpha: 0.5),
+                    color: colorScheme.secondary.withValues(alpha: 0.5),
                   ),
                 )
               : OutlinedButton.styleFrom(

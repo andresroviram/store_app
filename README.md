@@ -6,12 +6,12 @@ A new Flutter project.
 
 <br>
 <p align="center">
-<img src="screenshots/Screenshot_1741342595.png" width="30%">
-<img src="screenshots/Screenshot_1741342563.png" width="30%">
-<img src="screenshots/Screenshot_1741342534.png" width="30%">
-<img src="screenshots/Screenshot_1741342538.png" width="30%">
-<img src="screenshots/Screenshot_1741342544.png" width="30%">
-<img src="screenshots/Screenshot_1741342554.png" width="30%">
+<img src="screenshots/Screenshot_1741346262.png" width="30%">
+<img src="screenshots/Screenshot_1741347738.png" width="30%">
+<img src="screenshots/Screenshot_1741347716.png" width="30%">
+<img src="screenshots/Screenshot_1741347721.png" width="30%">
+<img src="screenshots/Screenshot_1741347959.png" width="30%">
+<img src="screenshots/Screenshot_1741347727.png" width="30%">
 </p>
 
 ## Using on this app

@@ -71,7 +71,7 @@ class _UserViewState extends State<UserView> {
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.primary,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
               ),
             ],
@@ -82,7 +82,7 @@ class _UserViewState extends State<UserView> {
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     side: BorderSide(
-                      color: Theme.of(context).colorScheme.primary,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),

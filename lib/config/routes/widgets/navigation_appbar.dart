@@ -21,7 +21,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
       forceMaterialTransparency: true,
       shape: LinearBorder.bottom(
         side: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
+          color: Theme.of(context).colorScheme.secondary,
         ),
       ),
       title: const NavigationTitle(),

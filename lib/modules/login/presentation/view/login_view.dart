@@ -22,7 +22,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   late AuthCubit _authCubit;
   final _usernameController = TextEditingController(text: 'admin@gmail.com');
-  final _passwordController = TextEditingController();
+  final _passwordController = TextEditingController(text: '123');
   final _formKey = GlobalKey<FormState>();
 
   @override

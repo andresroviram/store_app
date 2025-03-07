@@ -1,4 +1,4 @@
-flutter_icons:
+flutter_launcher_icons:
   android: "ic_notification"
   ios: false
   image_path: "assets/icon/notification.png"

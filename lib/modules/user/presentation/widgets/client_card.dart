@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/core/utils/extension/extension.dart';
 import 'package:store_app/modules/user/domain/entities/entities.dart';
 
 class ClientCard extends StatelessWidget {
@@ -13,12 +14,10 @@ class ClientCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        side: BorderSide(
-          color: Theme.of(context).colorScheme.primary,
-        ),
         borderRadius: BorderRadius.circular(20),
       ),
-      color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+      shadowColor: Theme.of(context).focusColor.withValues(alpha: 0.05),
+      color: context.colorScheme.primary.withValues(alpha: 0.1),
       margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         dense: true,

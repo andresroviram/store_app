@@ -44,8 +44,6 @@ class ProductListWidget extends StatelessWidget {
               boxShadow: [
                 BoxShadow(
                   color: Theme.of(context).focusColor.withValues(alpha: 0.05),
-                  offset: const Offset(0, 5),
-                  blurRadius: 5,
                 )
               ],
               borderRadius: BorderRadius.circular(20),

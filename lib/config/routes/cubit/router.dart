@@ -18,31 +18,24 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
   debugLogDiagnostics: kDebugMode,
-  initialLocation: LoginView.path,
+  initialLocation: SplashView.path,
   observers: [BotToastNavigatorObserver()],
   routes: [
     GoRoute(
       path: SplashView.path,
+      name: SplashView.name,
+      redirect: (BuildContext context, GoRouterState state) {
+        final isLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
+        if (!isLoggedIn) {
+          return LoginView.path;
+        }
+        return HomeView.path;
+      },
       builder: (context, state) => SplashView(),
     ),
     GoRoute(
       path: LoginView.path,
       name: LoginView.name,
-      redirect: (BuildContext context, GoRouterState state) {
-        final isLoggedIn = context.read<AuthCubit>().state.isLoggedIn;
-        if (!isLoggedIn) {
-          return null;
-        }
-        return HomeView.path;
-      },
-      pageBuilder: (context, state) => NoTransitionPage(
-        key: state.pageKey,
-        child: LoginView.create(),
-      ),
-    ),
-    GoRoute(
-      path: LoginView.pathLogout,
-      name: LoginView.nameLogout,
       pageBuilder: (context, state) => NoTransitionPage(
         key: state.pageKey,
         child: LoginView.create(),

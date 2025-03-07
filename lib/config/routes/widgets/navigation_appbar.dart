@@ -60,7 +60,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
           onSelected: (value) {
             if (value == 0) {
               context.read<AuthCubit>().logout();
-              context.read<RouterManager>().go(LoginView.pathLogout);
+              context.read<RouterManager>().go(LoginView.path);
             }
           },
           itemBuilder: (_) => [

@@ -13,9 +13,6 @@ class LoginView extends StatefulWidget {
   static const String path = '/login';
   static const String name = 'login';
 
-  static const String pathLogout = '/logout';
-  static const String nameLogout = 'logout';
-
   static Widget create() => const LoginView();
 
   @override
